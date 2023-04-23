@@ -1,5 +1,6 @@
 from datetime import time
 
+
 def test_dark_theme_by_time():
     """
     Протестируйте правильность переключения темной темы на сайте в зависимости от времени
@@ -26,8 +27,9 @@ def test_dark_theme_by_time_and_user_choice():
     if 6 < current_time.hour > 22 or dark_theme_enabled_by_user == True or dark_theme_enabled_by_user == None:
         is_dark_theme = True
     else:
-         is_dark_theme = False
+        is_dark_theme = False
     assert is_dark_theme is True
+
 
 def test_find_suitable_user():
     """
@@ -44,11 +46,12 @@ def test_find_suitable_user():
     suitable_users = [user for user in users if user['name'] == 'Olga'][0]
     assert suitable_users == {"name": "Olga", "age": 45}
     # TODO найдите всех пользователей младше 20 лет
-    suitable_users = [user for user in users if user['age']<20]
+    suitable_users = [user for user in users if user['age'] < 20]
     assert suitable_users == [
         {"name": "Stanislav", "age": 15},
         {"name": "Maria", "age": 18},
     ]
+
 
 # Сделайте функцию, которая будет печатать
 # читаемое имя переданной ей функции и значений аргументов.
