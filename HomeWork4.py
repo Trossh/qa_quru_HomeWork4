@@ -7,9 +7,8 @@ def test_dark_theme_by_time():
     """
     current_time = time(hour=23)
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
-    if current_time.hour >= 6 or current_time.hour >= 22:
-        is_dark_theme = True
-        assert is_dark_theme is True
+    is_dark_theme = current_time.hour >= 22 or current_time.hour < 6
+    assert is_dark_theme is True
 
 
 def test_dark_theme_by_time_and_user_choice():
@@ -20,14 +19,14 @@ def test_dark_theme_by_time_and_user_choice():
     dark_theme_enabled_by_user = False - Темная тема выключена
     dark_theme_enabled_by_user = None - Пользователь не сделал выбор (используется переключение по времени системы)
     """
-    current_time = time(hour=16)
+    current_time = time(hour=23)
     dark_theme_enabled_by_user = None
     # TODO переключите темную тему в зависимости от времени суток,
     #  но учтите что темная тема может быть включена вручную
-    if 6 < current_time.hour > 22 or dark_theme_enabled_by_user == True:
-        is_dark_theme = True
+    if dark_theme_enabled_by_user is not None:
+        is_dark_theme = dark_theme_enabled_by_user
     else:
-        is_dark_theme = False
+        is_dark_theme = current_time.hour >= 22 or current_time.hour < 6
     assert is_dark_theme is True
 
 
